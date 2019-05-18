@@ -7,17 +7,17 @@ import (
 
 const base = 62
 
-func buildEncodingMaps() (map[int]rune, map[rune]int) {
+var (
+	encodeMap = make(map[int]rune, base)
+	decodeMap = make(map[rune]int, base)
+)
+
+func init() {
 	charRanges := []struct {
 		begin rune
 		end   rune
-	}{
-		{'a', 'z'},
-		{'A', 'Z'},
-		{'0', '9'},
-	}
-	encodeMap := make(map[int]rune, base)
-	decodeMap := make(map[rune]int, base)
+	}{{'a', 'z'}, {'A', 'Z'}, {'0', '9'}}
+
 	ind := 0
 
 	for _, charRange := range charRanges {
@@ -27,11 +27,7 @@ func buildEncodingMaps() (map[int]rune, map[rune]int) {
 			ind += 1
 		}
 	}
-
-	return encodeMap, decodeMap
 }
-
-var encodeMap, decodeMap = buildEncodingMaps()
 
 func ConvertToURL(id int) string {
 	digits := []int{}
