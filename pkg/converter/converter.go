@@ -18,7 +18,7 @@ func init() {
 		end   rune
 	}{{'a', 'z'}, {'A', 'Z'}, {'0', '9'}}
 
-	ind := 0
+	ind := 1
 
 	for _, charRange := range charRanges {
 		for i := charRange.begin; i <= charRange.end; i++ {

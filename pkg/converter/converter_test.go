@@ -11,12 +11,12 @@ func TestConvertToURL(t *testing.T) {
 		in  int
 		out string
 	}{
-		{64, "bc"},
-		{512, "iq"},
-		{1024, "qG"},
-		{10000, "cLs"},
-		{100000, "Aa4"},
-		{1000000, "emjc"},
+		{64, "ab"},
+		{512, "hp"},
+		{1024, "pF"},
+		{2048, "Gb"},
+		{4096, "add"},
+		{8192, "bhh"},
 	}
 
 	for _, test := range tests {
@@ -35,12 +35,12 @@ func TestConvertToID(t *testing.T) {
 		in  string
 		out int
 	}{
-		{"bc", 64},
-		{"iq", 512},
-		{"qG", 1024},
-		{"cLs", 10000},
-		{"Aa4", 100000},
-		{"emjc", 1000000},
+		{"ab", 64},
+		{"hp", 512},
+		{"pF", 1024},
+		{"Gb", 2048},
+		{"add", 4096},
+		{"bhh", 8192},
 	}
 
 	for _, test := range tests {
