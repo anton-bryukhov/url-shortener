@@ -1,18 +1,21 @@
 package store
 
-import (
-	"github.com/anton-bryukhov/url-shortener/pkg/converter"
-)
+import "errors"
 
-type Source interface {
-	Get(int) (string, error)
+var urls []string
+
+func Get(id int) (string, error) {
+	if (id - 1 >= len(urls)) {
+		return "", errors.New("Not found")
+	}
+
+	return urls[id - 1], nil
 }
 
-type Store struct {
-	DataSource Source
+func GetSize() int {
+	return len(urls)
 }
 
-func (s *Store) Get(url string) (string, error) {
-	id := converter.ConvertToID(url)
-	return s.DataSource.Get(id)
+func Put(url string) {
+	urls = append(urls, url)
 }
